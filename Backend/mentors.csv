@@ -1,0 +1,16 @@
+id,name,expertise,tags,stage,location
+1,John Doe,"AI,ML","AI,Machine Learning,Deep Learning",Prototype,Bangalore
+2,Jane Smith,"Marketing,Funding","Marketing,Sales,Funding",Idea,Mumbai
+3,Emily Davis,"Product,Design","Product Management,UI/UX",Scaling,Delhi
+4,Arjun Patel,"AI,Healthcare","AI,Healthcare,Medical Devices",Prototype,Hyderabad
+5,Meera Menon,"Edtech,Teaching","Edtech,Teaching,Online Learning",Idea,Chennai
+6,Rajat Gupta,"Agritech,IoT","Agriculture,IoT,Smart Farming",Prototype,Pune
+7,Priyanka Roy,"Fintech,Compliance","Fintech,Compliance,Regulation",Scaling,Kolkata
+8,Daniel Souza,"AI,Healthcare,Data","AI,Data Science,Healthcare",Prototype,Bangalore
+9,Sneha Singh,"Sustainability,NGO","NGO,Social Impact,Sustainability",Idea,Patna
+10,Anil Kumar,"Product,Marketing","Product,Marketing,Branding",Scaling,Lucknow
+11,Farah Ali,"Cybersecurity,Cloud","Cybersecurity,Cloud Security,DevSecOps",Prototype,Mumbai
+12,Sameer Bhatt,"Water,Environment","Water,Environment,Sensors",Scaling,Chandigarh
+13,Vikram Desai,"Automotive,AI","Automotive,AI,Insurance",Prototype,Delhi
+14,Divya Sharma,"Edtech,Mentorship","Edtech,Mentorship,Entrepreneurship",Idea,Indore
+15,Swati Agarwal,"Blockchain,Peer-to-peer","Blockchain,Peer-to-peer,Crypto",Scaling,Ahmedabad
