@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <nav className="nav">
-        <a href="#" className="logo">🚀 StartupForge</a>
+        <a href="#" className="logo">🚀 IdeaForge</a>
         <ul className="nav-links">
           <li><a href="#features">Features</a></li>
           <li><a href="#validate">Validate</a></li>
