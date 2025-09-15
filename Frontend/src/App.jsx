@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import ValidationTool from './components/ValidationTool';
-import MentorSection from './components/MentorSection';
-import DataEcosystem from './components/DataEcosystem';
-import Footer from './components/Footer';
+import Header from './components/Header.jsx';
+import Hero from './components/Hero.jsx';
+import Features from './components/Features.jsx';
+import ValidationTool from './components/ValidationTool.jsx';
+import MentorSection from './components/MentorSection.jsx';
+import DataEcosystem from './components/DataEcosystem.jsx';
+import Footer from './components/Footer.jsx';
 
 function App() {
   return (
