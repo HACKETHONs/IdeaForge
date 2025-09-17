@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const mentorsData = [
-  { avatar: 'SJ', name: 'Sarah Johnson', expertise: 'FinTech Expert', bio: 'Former VP at Goldman Sachs, Founded 2 successful FinTech startups. 15+ years in financial services.' },
+  { avatar: 'SJ', name: 'Vaibhavi Puri', expertise: 'FinTech Expert', bio: 'Former VP at Goldman Sachs, Founded 2 successful FinTech startups. 15+ years in financial services.' },
   { avatar: 'MR', name: 'Mark Rodriguez', expertise: 'AI/ML Specialist', bio: 'Lead AI Engineer at Google, Expert in machine learning and product development. 10+ years experience.' },
   { avatar: 'LK', name: 'Lisa Kim', expertise: 'Growth Marketing', bio: 'Growth strategist who scaled 5 startups to $10M+ revenue. Expert in customer acquisition and retention.' },
   { avatar: 'DA', name: 'David Anderson', expertise: 'E-commerce', bio: 'Built and sold 3 e-commerce companies. Expert in supply chain, logistics, and online marketplace strategy.' },
