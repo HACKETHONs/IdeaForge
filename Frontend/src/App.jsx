@@ -1,26 +1,31 @@
-import React from 'react';
-import './App.css';
-import Header from './components/Header.jsx';
-import Hero from './components/Hero.jsx';
-import Features from './components/Features.jsx';
-import ValidationTool from './components/ValidationTool.jsx';
-import MentorSection from './components/MentorSection.jsx';
-import DataEcosystem from './components/DataEcosystem.jsx';
-import Footer from './components/Footer.jsx';
+import React, { useState } from "react";
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
+import Landing from "./pages/Landing.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import AuthModel from "./components/AuthModel.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import "./index.css";
 
 function App() {
+  const [authOpen, setAuthOpen] = useState(false);
+
+  const openAuth = () => setAuthOpen(true);
+  const closeAuth = () => setAuthOpen(false);
+
   return (
-    <>
-      <Header />
+    <Router>
+      <Header openAuth={openAuth} />
       <main>
-        <Hero />
-        <Features />
-        <ValidationTool />
-        <MentorSection />
-        <DataEcosystem />
+        <Routes>
+          <Route path="/" element={<Landing openAuth={openAuth} />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
       </main>
       <Footer />
-    </>
+      <AuthModel isOpen={authOpen} onClose={closeAuth} />
+    </Router>
   );
 }
 

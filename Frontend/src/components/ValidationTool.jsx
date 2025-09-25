@@ -48,7 +48,8 @@ const generateValidationResults = (title, industry, market) => {
   );
 };
 
-const ValidationTool = () => {
+
+const ValidationTool = ({ openAuth }) => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -63,20 +64,12 @@ const ValidationTool = () => {
     setFormData(prev => ({ ...prev, [id]: value }));
   };
 
+  // On Analyze click, open login modal
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => {
-      const generatedResults = generateValidationResults(formData.title, formData.industry, formData.market);
-      setResults(generatedResults);
-      setIsLoading(false);
-      
-      const resultsSection = document.getElementById('validation-results');
-      if (resultsSection) {
-        resultsSection.classList.add('visible');
-        resultsSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 2000);
+    if (openAuth) {
+      openAuth();
+    }
   };
 
   return (
@@ -90,25 +83,24 @@ const ValidationTool = () => {
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="idea-title">Startup Idea Title</label>
-              <input type="text" id="idea-title" value={formData.title} onChange={handleChange} placeholder="e.g., AI-powered fitness coach app" required />
+              <textarea id="title" value={formData.title} onChange={handleChange} placeholder="e.g., AI-powered fitness coach app" required ></textarea>
             </div>
             <div className="form-group">
               <label htmlFor="idea-description">Describe Your Idea</label>
-              <textarea id="idea-description" rows="4" value={formData.description} onChange={handleChange} placeholder="Explain your startup idea, target market, and value proposition..." required></textarea>
+              <textarea id="description" rows="4" value={formData.description} onChange={handleChange} placeholder="Explain your startup idea, target market, and value proposition..." required></textarea>
             </div>
             <div className="form-group">
               <label htmlFor="target-market">Target Market</label>
-              <input type="text" id="target-market" value={formData.market} onChange={handleChange} placeholder="e.g., Health-conscious millennials in urban areas" required />
+              <textarea id="market" value={formData.market} onChange={handleChange} placeholder="e.g., Health-conscious millennials in urban areas" required ></textarea>
             </div>
             <div className="form-group">
               <label htmlFor="industry">Industry</label>
-              <input type="text" id="industry" value={formData.industry} onChange={handleChange} placeholder="e.g., HealthTech, FinTech, EdTech" required />
+              <textarea id="industry" value={formData.industry} onChange={handleChange} placeholder="e.g., HealthTech, FinTech, EdTech" required ></textarea>
             </div>
             <button type="submit" className="validate-btn" disabled={isLoading}>
               {isLoading ? '🤖 Analyzing...' : '🤖 Validate with AI'}
             </button>
           </form>
-          
           <div id="validation-results" className="validation-results">
             <h3>🎯 Validation Results</h3>
             {results}
