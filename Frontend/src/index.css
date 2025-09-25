@@ -7,15 +7,18 @@
 }
 
 :root {
-    --primary: #6366f1;
-    --primary-dark: #4f46e5;
-    --secondary: #f59e0b;
-    --accent: #06b6d4;
-    --dark: #1e293b;
-    --light: #f8fafc;
-    --gray: #64748b;
-    --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --card-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  /* New Balanced Palette */
+  --primary: #161616;         /* Navy Blue for structure, titles, and backgrounds */
+  --primary-dark: #061a57;     /* Darker navy for hover effects */
+  --accent: #ffa86e;          /* Dark Orange for all buttons and calls-to-action */
+  --accent-hover: #dd732c;    /* A slightly darker orange for button hovers */
+  --dark: #161616;             /* Your Black for primary text */
+  --light: #f7f7f7;            /* Your Grey for backgrounds */
+  --gray: #6c757d;             /* A neutral mid-grey for secondary text */
+  
+  /* --- Replaced Variables --- */
+  --gradient: var(--primary);  /* Gradient replaced with solid navy blue */
+  --card-shadow: 0 8px 20px rgba(8, 33, 109, 0.1); /* Shadow tinted with navy */
 }
 
 body {

@@ -32,7 +32,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; {currentYear} StartupForge. All rights reserved. Built with ❤️ for entrepreneurs.</p>
+        <p>&copy; {currentYear} IdeaForge. All rights reserved. Built with ❤️ for entrepreneurs.</p>
       </div>
     </footer>
   );
