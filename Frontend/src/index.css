@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+  /* New Balanced Palette */
+  --primary: #161616;         /* Navy Blue for structure, titles, and backgrounds */
+  --primary-dark: #061a57;     /* Darker navy for hover effects */
+  --accent: #ffa86e;          /* Dark Orange for all buttons and calls-to-action */
+  --accent-hover: #dd732c;    /* A slightly darker orange for button hovers */
+  --dark: #161616;             /* Your Black for primary text */
+  --light: #f7f7f7;            /* Your Grey for backgrounds */
+  --gray: #6c757d;             /* A neutral mid-grey for secondary text */
+  
+  /* --- Replaced Variables --- */
+  --gradient: var(--primary);  /* Gradient replaced with solid navy blue */
+  --card-shadow: 0 8px 20px rgba(8, 33, 109, 0.1); /* Shadow tinted with navy */
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
