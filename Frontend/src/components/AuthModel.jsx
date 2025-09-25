@@ -7,11 +7,10 @@ const AuthModel = ({ isOpen, onClose }) => {
   return (
     <div
       className="auth-modal-overlay"
-      onClick={onClose}
       style={{
         position: "fixed",
         inset: 0,
-        backgroundColor: "rgba(0,0,0,0.6)",
+        backgroundColor: "rgba(0,0,0,0.08)", // Subtle backdrop only
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -22,36 +21,35 @@ const AuthModel = ({ isOpen, onClose }) => {
         className="auth-modal-content"
         onClick={(e) => e.stopPropagation()}
         style={{
-          backgroundColor: "var(--light)",
-          borderRadius: "1rem",
-          boxShadow: "0 12px 32px rgba(8,33,109,0.15)",
-          maxWidth: "460px",
+          backgroundColor: "#fff",
+          borderRadius: "1.5rem",
+          boxShadow: "0 8px 32px rgba(8,33,109,0.14)",
+          maxWidth: "440px",
           width: "90%",
-          padding: "2.5rem 2.5rem",
+          padding: "2rem 2.5rem 2.5rem 2.5rem",
           position: "relative",
           fontFamily: "'Inter', sans-serif",
-          maxHeight: "90vh",
-          overflowY: "auto",
         }}
       >
+        {/* Close button inside the box at the top right */}
         <button
           onClick={onClose}
           aria-label="Close modal"
           style={{
             position: "absolute",
-            top: "1rem",
-            right: "1rem",
-            background: "transparent",
+            top: "1.2rem",
+            right: "1.3rem",
+            background: "none",
             border: "none",
-            fontSize: "2.25rem",
-            fontWeight: "bold",
-            color: "var(--primary)",
+            fontSize: "2rem",
+            color: "#161616",
             cursor: "pointer",
-            lineHeight: 1,
+            zIndex: 1
           }}
         >
           &times;
         </button>
+        {/* Auth form goes here */}
         <Auth />
       </div>
     </div>
