@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./../App.css";
 
-const Auth = () => {
+const Auth = ({ onLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [form, setForm] = useState({
     username: "",
@@ -9,13 +9,17 @@ const Auth = () => {
     password: "",
   });
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setSuccess("");
+
     if (
       (!isLogin && (!form.username || !form.email || !form.password)) ||
       (isLogin && (!form.email || !form.password))
@@ -23,11 +27,35 @@ const Auth = () => {
       setError("Please fill all fields.");
       return;
     }
-    setError("");
-    if (isLogin) {
-      alert(`Logging in as ${form.email}`);
-    } else {
-      alert(`Registering user: ${form.username}`);
+
+    const endpoint = isLogin ? "login" : "register";
+    const body = isLogin
+      ? { email: form.email, password: form.password }
+      : { username: form.username, email: form.email, password: form.password };
+
+    try {
+      const response = await fetch(`http://127.0.0.1:8000/${endpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSuccess(data.msg);
+        if (isLogin) {
+          // Direct login, no alert, and close modal
+          onLogin({ username: data.username, email: data.email });
+        }
+      } else {
+        setError(data.detail || "Something went wrong.");
+      }
+    } catch (err) {
+      console.error("Fetch error:", err);
+      setError("Could not connect to the server.");
     }
   };
 
@@ -116,6 +144,15 @@ const Auth = () => {
             textAlign: "center"
           }}>
             {error}
+          </div>
+        )}
+        {success && (
+          <div style={{
+            color: "green",
+            marginBottom: "1rem",
+            textAlign: "center"
+          }}>
+            {success}
           </div>
         )}
         <button

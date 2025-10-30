@@ -1,14 +1,28 @@
-import React, { useState } from 'react';
-
-const mentorsData = [
-  { avatar: 'SJ', name: 'Vaibhavi Puri', expertise: 'FinTech Expert', bio: 'Former VP at Goldman Sachs, Founded 2 successful FinTech startups. 15+ years in financial services.' },
-  { avatar: 'MR', name: 'Mark Rodriguez', expertise: 'AI/ML Specialist', bio: 'Lead AI Engineer at Google, Expert in machine learning and product development. 10+ years experience.' },
-  { avatar: 'LK', name: 'Lisa Kim', expertise: 'Growth Marketing', bio: 'Growth strategist who scaled 5 startups to $10M+ revenue. Expert in customer acquisition and retention.' },
-  { avatar: 'DA', name: 'David Anderson', expertise: 'E-commerce', bio: 'Built and sold 3 e-commerce companies. Expert in supply chain, logistics, and online marketplace strategy.' },
-];
+import React, { useState, useEffect } from 'react';
 
 const MentorSection = () => {
+  const [mentorsData, setMentorsData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [connections, setConnections] = useState({});
+
+  useEffect(() => {
+    const fetchMentors = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/mentors');
+        if (!response.ok) {
+          throw new Error('Failed to fetch mentors.');
+        }
+        const data = await response.json();
+        setMentorsData(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchMentors();
+  }, []);
 
   const handleConnect = (mentorName) => {
     setConnections(prev => ({ ...prev, [mentorName]: true }));
@@ -24,13 +38,16 @@ const MentorSection = () => {
           <h2>Connect with Expert Mentors</h2>
           <p>Get guidance from successful entrepreneurs and industry experts</p>
         </div>
+        {isLoading && <p>Loading mentors...</p>}
+        {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+        {!isLoading && mentorsData.length === 0 && <p>No mentors found. Please add some via the API.</p>}
         <div className="mentor-grid">
-          {mentorsData.map((mentor, index) => (
+          {!isLoading && mentorsData.map((mentor, index) => (
             <div className="mentor-card" key={index}>
-              <div className="mentor-avatar">{mentor.avatar}</div>
+              <div className="mentor-avatar">{mentor.name.slice(0, 2).toUpperCase()}</div>
               <h4>{mentor.name}</h4>
               <p className="expertise">{mentor.expertise}</p>
-              <p>{mentor.bio}</p>
+              <p>{mentor.description}</p>
               <button 
                 className="connect-btn" 
                 onClick={() => handleConnect(mentor.name)}

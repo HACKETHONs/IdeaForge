@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-section">
-          <h4>StartupForge</h4>
+          <h4>IdeaForge</h4>
           <p>Empowering entrepreneurs with AI-driven insights, expert mentorship, and trusted data to build successful startups.</p>
         </div>
         <div className="footer-section">

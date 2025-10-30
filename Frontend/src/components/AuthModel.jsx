@@ -1,7 +1,7 @@
 import React from "react";
 import Auth from "../pages/Auth.jsx";
 
-const AuthModel = ({ isOpen, onClose }) => {
+const AuthModel = ({ isOpen, onClose, onLogin }) => {
   if (!isOpen) return null;
 
   return (
@@ -50,7 +50,7 @@ const AuthModel = ({ isOpen, onClose }) => {
           &times;
         </button>
         {/* Auth form goes here */}
-        <Auth />
+        <Auth onLogin={onLogin} />
       </div>
     </div>
   );
