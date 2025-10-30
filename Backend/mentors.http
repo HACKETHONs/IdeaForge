@@ -1,0 +1,15 @@
+### Add Mentor: Emily Davis
+POST http://127.0.0.1:8000/create-mentor
+Content-Type: application/json
+
+{
+{
+  "name": "Emily Davis",
+  "expertise": ["Product Management", "UI/UX Design"],
+  "description": "Expert in building scalable products and user-centered design for startups.",
+  "email": "emily.davis@example.com",
+  "availability": "Weekly sessions",
+  "location": "Remote",
+  "tags": ["Startups", "Scaling", "Design Thinking", "Product Strategy"]
+}
+

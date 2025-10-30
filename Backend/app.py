@@ -3,8 +3,23 @@ from pydantic import BaseModel, EmailStr
 import motor.motor_asyncio
 from bson import ObjectId
 from scorer import validate_idea_gemini_optimized
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+# Add CORS Middleware to allow communication from your frontend
+origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 MONGO_DETAILS = "mongodb://localhost:27017"
 client = motor.motor_asyncio.AsyncIOMotorClient(MONGO_DETAILS)
@@ -12,7 +27,6 @@ database = client["SIH2025"]
 ideas_collection = database.get_collection("ideas")
 mentors_collection = database.get_collection("mentors")
 users_collection = database.get_collection("users")
-
 # ========== SCHEMAS ==========
 
 class UserModel(BaseModel):
